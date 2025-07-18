@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 const db = require('./db'); // Assuming your db.js handles Mongoose connection
+require("dotenv").config();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+const PORT = process.env.PORT || 3000;
+
 
 // Root route
 app.get('/', (req, res) => {
@@ -19,6 +22,7 @@ app.use('/menuitem', menuRoutes )
 
 
 // Start server
-app.listen(3000, () => {
+
+app.listen(PORT, () => {
     console.log("Server listening on port 3000");
 });
