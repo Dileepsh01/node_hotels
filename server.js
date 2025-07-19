@@ -1,28 +1,28 @@
 const express = require('express');
 const app = express();
-const db = require('./db'); // Assuming your db.js handles Mongoose connection
-require("dotenv").config();
+const db = require('./db');
+require('dotenv').config()
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-const PORT = process.env.PORT || 3000;
+
+const PORT = process.env.PORT ||3000;
 
 
 // Root route
 app.get('/', (req, res) => {
-    res.send("Hello! Welcome to my channel.");
+  res.send("Hello! Welcome to my channel.");
 });
-
 
 
 const personRoutes = require('./routes/personRoutes');
 const menuRoutes = require('./routes/menuRoutes')
 
 app.use('/person', personRoutes)
-app.use('/menuitem', menuRoutes )
+app.use('/menuitem', menuRoutes)
 
 
 // Start server
 
 app.listen(PORT, () => {
-    console.log("Server listening on port 3000");
+  console.log("Server listening on port 3000");
 });

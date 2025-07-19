@@ -1,19 +1,13 @@
 const mongoose = require("mongoose");
+require('dotenv').config()
 
+//  const mongoURL = "mongodb://127.0.0.1:27017/hotels";
+// const mongoURL = "mongodb+srv://dileep_sh_01:Test@cluster0.trwhqje.mongodb.net/"
+const mongoURL = process.env.MONGODB_URL
 
-require('dotenv').config();
-
-
- 
-//const mongoURI =   mongoose.connect("mongodb://127.0.0.1:27017/hotels");
-
-// ⬇️ Define your connection URL separately
-const mongoURI = process.env.MONGODB_URL;
-
-// ⬇️ Use the variable in mongoose.connect()
-mongoose.connect(mongoURI, {
+ mongoose.connect(mongoURL, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 });
 
 const db = mongoose.connection;
